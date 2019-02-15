@@ -132,7 +132,7 @@ object Stream {
     //ssc.awaitTermination()   // Terminate the Streaming program until manually stopped or exception occurs
     try{
       println(s"before terminate: ${df.format(new Date)}")
-      ssc.awaitTerminationOrTimeout(60l * 1000)   // Terminate the Streaming program in 30s
+      ssc.awaitTerminationOrTimeout(60l * 1000)   // Terminate the Streaming program in 60s
     }finally {
       println(s"after terminate: ${df.format(new Date)}")
     }
