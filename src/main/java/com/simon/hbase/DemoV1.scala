@@ -69,29 +69,22 @@ object DemoV1 {
     p.addColumn(cf, cq, Bytes.toBytes(95))
     table.put(p)
     get("insert",table)
-    table.close()
-
 
     // update
-    val table2 = connect.getTable(tableName)
     val u = new Put(rb)
     u.addColumn(cf, cq, Bytes.toBytes(89))
-    table2.put(u)
-    get("update",table2)
-    table2.close()
-
+    table.put(u)
+    get("update",table)
 
     // delete value
-    val table3 = connect.getTable(tableName)
     val d = new Delete(rb)
         d.addColumns(cf, cq)
     // NOTE:
     // - use d.addColumnS() to remove all versions
     // - use d.addColumn() to remove the latest version
-    table3.delete(d)
-    get("delete",table3)
-    table3.close()
-
+    table.delete(d)
+    get("delete",table)
+    table.close()
 
     // Delete table
     admin.disableTable(tableName)
